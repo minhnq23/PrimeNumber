@@ -34,9 +34,10 @@ class _MyState extends State<MyHomePage> {
       textNumber = n;
     });
   }
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MyMaterialApp(
       home: Scaffold(
         appBar: AppBar(
           leading: IconButton(
@@ -90,11 +91,10 @@ class _MyState extends State<MyHomePage> {
                   if (isPrime(number)) {
                     showText = "Prime Number: $number";
                     changeText(showText);
-                  }else{
+                  } else {
                     showText = "No Prime Number: $number";
                     changeText(showText);
                   }
-
 
                   // Respond to button press
                 },
@@ -116,16 +116,35 @@ class _MyState extends State<MyHomePage> {
           ),
         ),
       ),
+
     );
   }
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
+    return MyMaterialApp(
+      title: "My App",
       home: MyHomePage(),
     );
   }
+}
+
+class MyMaterialApp extends MaterialApp {
+   MyMaterialApp({
+    Key? key,
+     String title ="",
+    required Widget home,
+  }) : super(
+    key: key,
+    title: title,
+    home: home,
+    debugShowCheckedModeBanner: false,
+  );
+
+  @override
+  bool get debugShowCheckedModeBanner => false;
 }
